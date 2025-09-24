@@ -13,14 +13,14 @@
 </head>
 <body>
 
-    <div class="hero-container">
+    <div class="hero-container" id="inicio">
         <header class="header">
             <a href="index.html" class="header-logo">
                 <img src="img/logo.png" alt="Logo Principal Agro Química Biochemical">
             </a>
             <nav class="navbar">
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
                     <li><a href="#productos" class="nav-link">Productos</a></li>
                     <li><a href="#empresa" class="nav-link">Empresa</a></li>
                     <li><a href="#sustentabilidad" class="nav-link">Sustentabilidad</a></li>
@@ -197,7 +197,7 @@
     </div>
 </section>
 
-<section class="product-showcase" id="produtos">
+<section class="product-showcase" id="productos">
     <div class="product-showcase-container">
         <div class="product-info">
             <span class="subtitle">TRATAMIENTO DE SEMILLAS</span>
@@ -380,16 +380,22 @@
                 </div>
             <div class="sustainability-text-col">
                 <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.42 2.9C13.85 4.79 14.2 7.36 13.21 9.62s-3.21 3.59-5.29 4.31a3.4 3.4 0 0 1-3.95-1.55 2.53 2.53 0 0 1 .4-3.22 2.5 2.5 0 0 1 3.22-.4c1.61.64 2.58 2.3 3.32 3.65"/><path d="M15.42 12.33c1.15-1 2.33-1.83 3.5-2.67a3.4 3.4 0 0 1 4.5 1 2.5 2.5 0 0 1-1.33 4.33c-1.91.44-3.57 1.5-5.32 2.5a4 4 0 0 1-4.82-1.2A2.52 2.52 0 0 1 8.8 12c.59-1.94 2.1-3.64 3.82-4.8"/><path d="M12 22a10 10 0 1 1 10-10c0 2.24-.95 4.4-2.58 5.92s-3.68 2.58-5.92 2.58"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22V4"/>
+                        <path d="M12 4c-2 2.5-4 3-6 3-1 0-2-.5-2-2 0-3 2.5-3 4-3 1.5 0 4 1 4 4v3"/>
+                        <path d="M12 4c2 2.5 4 3 6 3 1 0 2-.5 2-2 0-3-2.5-3-4-3-1.5 0-4 1-4 4v3"/>
+                        <path d="M12 10c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z"/>
+                        <path d="M12 15v7"/>
+                    </svg>
                 </div>
                 <h3>Comprometidos con el medio ambiente</h3>
                 <p>Promovemos una cultura de sostenibilidad y cumplimiento ambiental en cada paso de nuestra operación, aplicando buenas prácticas de gestión de residuos y el uso responsable de productos agroquímicos.</p>
             </div>
-        </div>
+        </div>  
     </div>
 </section>
 
-<section id="sustentabilidade">
+<section id="sustentabilidad">
     <section class="policy-hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('img/ciclo-da-soja-2.webp');">
         <div class="policy-container">
             <span class="policy-subtitle">Nuestro compromiso con la sostenibilidad</span>
@@ -491,7 +497,7 @@
     </div>
 </section>
 
-<footer class="footer" id="contato">
+<footer class="footer" id="contacto">
     <div class="footer-container">
         <div class="footer-col">
             <p>Ofrecemos soluciones agrícolas innovadoras y de alta calidad, orientadas a potenciar la productividad y el desarrollo sostenible de los cultivos.</p>
@@ -525,7 +531,16 @@
                 </li>
                 <li class="address">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    <span>Av. Paraná, Esquina Luis Alberto del Paraná, Zona comercial - Paraná Country Club, Hernandarias - Alto Paraná - Paraguay</span>
+                    <div class="address-content">
+                        <a href="https://www.google.com/maps/place/Agro+Quimica/@-25.479569,-54.6221436,165m/data=!3m1!1e3!4m21!1m14!4m13!1m5!1m1!1s0x94f68525ec169029:0xc5975f4e210fcbbb!2m2!1d-54.621419!2d-25.4792681!1m6!1m2!1s0x94f6852613b052b5:0x55ecbacbe61c518b!2sHerminio+Gim%C3%A9nez,+7220!2m2!1d-54.6214379!2d-25.4792733!3m5!1s0x94f6852613b052b5:0x55ecbacbe61c518b!8m2!3d-25.4792869!4d-54.6214534!16s%2Fg%2F11bxftfgmm?entry=ttu" target="_blank" rel="noopener noreferrer" class="address-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="globe-icon">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                            <span>Av. Paraná, Esquina Luis Alberto del Paraná, Zona comercial - Paraná Country Club, Hernandarias - Alto Paraná - Paraguay</span>
+                        </a>
+                    </div>
                 </li>
             </ul>
             <div class="footer-map">
