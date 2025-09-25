@@ -1988,7 +1988,7 @@ button {
     background-image: url('img/soja.jpeg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: fixed; 
     position: relative;
 }
 
@@ -1999,7 +1999,7 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(245, 243, 237, 0.5);
+    background-color: rgba(245, 243, 237, 0.5); 
 }
 
 .ticker-container {
@@ -2031,7 +2031,7 @@ button {
 }
 
 .ticker-logo img {
-    height: 60px;
+    height: 25px;
     width: auto;
 }
 
@@ -2057,11 +2057,10 @@ button {
 }
 
 .ticker-value.negative {
-    color: #c62828;
+    color: #c62828; 
 }
-
 .ticker-value.positive {
-    color: #2E7D32;
+    color: #2E7D32; 
 }
 
 .ticker-action {
@@ -2111,23 +2110,20 @@ button {
 @media(min-width: 992px) {
     .ticker-bar {
         display: grid;
-        grid-template-columns: 1.5fr repeat(3, 1fr) 2fr;
+        grid-template-columns: 1.5fr repeat(3, 1fr) 2fr; /* Layout original para 5 colunas */
         gap: 2rem;
         padding: 1.5rem 2.5rem;
         flex-direction: row;
     }
-
     .ticker-logo {
         padding: 0;
         border: none;
         text-align: left;
     }
-
     .ticker-item {
         align-items: flex-start;
         text-align: left;
     }
-
     .ticker-action {
         width: auto;
     }

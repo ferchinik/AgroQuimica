@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- FUNCIONALIDADE DO CABEÇALHO ---
-    // (nenhuma alteração nesta parte)
     const header = document.querySelector('.header');
     const hamburger = document.querySelector('.hamburger');
     const navbar = document.querySelector('.navbar');
@@ -76,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', setActiveSection);
 
     // --- CÓDIGO DO SLIDER DE DEPOIMENTOS ---
-    // (nenhuma alteração nesta parte)
     const slider = document.querySelector('.testimonial-slider');
     if (slider) {
         const slides = document.querySelectorAll('.testimonial-card');
@@ -99,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', updateSliderPosition);
     }
 
-    // --- CÓDIGO DO TICKER E CALCULADORA DE SOJA (COM FORMATAÇÃO) ---
+    // --- CÓDIGO DO TICKER E CALCULADORA (FMP API CORRIGIDA) ---
     const tickerPriceEl = document.getElementById('ticker-price');
     const tickerChangeEl = document.getElementById('ticker-change');
     const tickerPercentEl = document.getElementById('ticker-percent');
@@ -113,8 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultValueEl = document.getElementById('result-value');
 
     async function fetchSoybeanData() {
-        console.log("Buscando dados de cotação da API FMP (versão completa)...");
+        console.log("Buscando dados de cotação da FMP API...");
+        
+        // ** COLE A SUA NOVA CHAVE DE API DA NOVA CONTA AQUI **
         const apiKey = "pujzdnNxZypG3dHjFsKz9UnqoHtcsQw8"; 
+        
+        // Endpoint correto para commodities
         const apiUrl = `https://financialmodelingprep.com/api/v3/quote/ZS=F?apikey=${apiKey}`;
 
         try {
@@ -208,9 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (calculateValueBtn) calculateValueBtn.addEventListener('click', calculateSoyValue);
 
-    // Inicia o ticker ao carregar a página (apenas uma vez)
+    // Carrega o valor uma única vez
     refreshTicker();
-
-    // A LINHA ABAIXO FOI REMOVIDA PARA ECONOMIZAR REQUISIÇÕES
-    // setInterval(refreshTicker, 300000); 
 });
