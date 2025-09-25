@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- FUNCIONALIDADE DO CABEÇALHO ---
+    // (nenhuma alteração nesta parte)
     const header = document.querySelector('.header');
     const hamburger = document.querySelector('.hamburger');
     const navbar = document.querySelector('.navbar');
@@ -112,28 +114,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchSoybeanData() {
         console.log("Buscando dados de cotação da API FMP (versão completa)...");
-        const apiKey = "pujzdnNxZypG3dHjFsKz9UnqoHtcsQw8";
+        const apiKey = "pujzdnNxZypG3dHjFsKz9UnqoHtcsQw8"; 
         const apiUrl = `https://financialmodelingprep.com/api/v3/quote/ZS=F?apikey=${apiKey}`;
 
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
-
+            
             const data = await response.json();
-            const soyData = data[0];
+            const soyData = data[0]; 
             if (!soyData) throw new Error("Dados da soja não encontrados na resposta da API.");
-
-            // **CORREÇÃO**: O preço já vem em dólares, não precisa multiplicar.
+            
             return {
-                price: soyData.price, // Retorna o valor em dólares diretamente
+                price: soyData.price,
                 change: soyData.change,
                 percentChange: soyData.changesPercentage
             };
         } catch (error) {
             console.error("Erro ao buscar dados de cotação:", error);
-            if (tickerPriceEl) tickerPriceEl.textContent = "Erro";
-            if (tickerChangeEl) tickerChangeEl.textContent = "N/A";
-            if (tickerPercentEl) tickerPercentEl.textContent = "N/A";
+            if(tickerPriceEl) tickerPriceEl.textContent = "Erro";
+            if(tickerChangeEl) tickerChangeEl.textContent = "N/A";
+            if(tickerPercentEl) tickerPercentEl.textContent = "N/A";
             return null;
         }
     }
@@ -141,12 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateTickerUI(data) {
         if (!data || !tickerPriceEl) return;
 
-        // **CORREÇÃO**: Formata o número para o padrão americano (vírgula para milhar)
         tickerPriceEl.textContent = data.price.toLocaleString('en-US', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
-
+        
         tickerChangeEl.textContent = data.change.toFixed(2);
         tickerPercentEl.textContent = `${data.percentChange.toFixed(2)}%`;
 
@@ -175,8 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Por favor, insira uma quantidade válida.");
             return;
         }
-
-        // **CORREÇÃO**: Remove as vírgulas do texto para converter para número
+        
         const currentBushelPriceString = tickerPriceEl.textContent.replace(/,/g, '');
         const currentBushelPriceInDollars = parseFloat(currentBushelPriceString);
 
@@ -209,5 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (calculateValueBtn) calculateValueBtn.addEventListener('click', calculateSoyValue);
 
+    // Inicia o ticker ao carregar a página (apenas uma vez)
     refreshTicker();
+
+    // A LINHA ABAIXO FOI REMOVIDA PARA ECONOMIZAR REQUISIÇÕES
+    // setInterval(refreshTicker, 300000); 
 });
