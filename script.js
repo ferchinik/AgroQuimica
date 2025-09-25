@@ -136,31 +136,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const unitSelect = document.getElementById('unit');
     const resultDiv = document.getElementById('calculator-result');
     const resultValueEl = document.getElementById('result-value');
-
-    // Função para buscar dados de cotação (simulada com dados estáticos)
+    
+    // --- NOVA FUNÇÃO PARA BUSCAR DADOS REAIS DA COTAÇÃO ---
     async function fetchSoybeanData() {
-        console.log("Buscando dados de cotação (usando valores estáticos)...");
+        console.log("Buscando dados de cotação da API...");
+        // URL da API gratuita para cotação de commodities (Soja = SOYBN)
+        const apiUrl = 'https://api.commodities.ai/v1/commodities/SOYBN';
+        
         try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error(`Erro na API: ${response.statusText}`);
+            }
+            const data = await response.json();
+            
+            // A API retorna o preço em dólares. O ticker original mostrava em centavos, então multiplicamos por 100.
+            const priceInCents = data.price * 100;
+
             return {
-                price: 991.00,
-                change: -7.50,
-                percentChange: -0.75
+                price: priceInCents,
+                change: data.change, 
+                percentChange: data.percentChange 
             };
         } catch (error) {
             console.error("Erro ao buscar dados de cotação:", error);
-            // Retorna os valores atuais se a busca falhar
+            // Se a API falhar, retorna os valores antigos para não quebrar o site
             return {
-                price: parseFloat(tickerPriceEl.textContent),
-                change: parseFloat(tickerChangeEl.textContent),
-                percentChange: parseFloat(tickerPercentEl.textContent.replace('%', ''))
+                price: 991.00, // Valor de fallback
+                change: -7.50,
+                percentChange: -0.75
             };
         }
     }
 
-    // Função para atualizar a interface do ticker
+    // Função para atualizar a interface do ticker (sem alterações)
     function updateTickerUI(data) {
         if (!tickerPriceEl) return;
+        
+        // O ticker mostra o valor em centavos, então usamos o valor já convertido.
         tickerPriceEl.textContent = data.price.toFixed(2);
+        
+        // A variação na API já vem em dólares, então não precisa converter.
         tickerChangeEl.textContent = data.change.toFixed(2);
         tickerPercentEl.textContent = `${data.percentChange.toFixed(2)}%`;
 
@@ -181,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTickerUI(data);
     }
 
-    // --- LÓGICA DA CALCULADORA ---
+    // --- LÓGICA DA CALCULADORA (sem alterações) ---
     function calculateSoyValue() {
         const quantity = parseFloat(quantityInput.value);
         if (isNaN(quantity) || quantity <= 0) {
@@ -226,4 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicia o ticker ao carregar a página
     refreshTicker();
+
+    // Opcional: Atualiza o ticker a cada 5 minutos
+    setInterval(refreshTicker, 300000); 
 });
