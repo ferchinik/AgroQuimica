@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Buscando dados de cotação da FMP API...");
         
         // ** COLE A SUA NOVA CHAVE DE API DA NOVA CONTA AQUI **
-        const apiKey = "pujzdnNxZypG3dHjFsKz9UnqoHtcsQw8"; 
+        const apiKey = "KUOcZleI4QcBT5mSxIPNBkanTEWka116"; 
         
         // Endpoint correto para commodities
         const apiUrl = `https://financialmodelingprep.com/api/v3/quote/ZS=F?apikey=${apiKey}`;
