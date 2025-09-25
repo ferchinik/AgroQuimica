@@ -2245,7 +2245,9 @@ button {
 }
 
 .whatsapp-float svg {
-    width: 32px; /* Tamanho ajustado para o novo ícone */
-    height: 32px; /* Tamanho ajustado para o novo ícone */
+    width: 32px;
+    /* Tamanho ajustado para o novo ícone */
+    height: 32px;
+    /* Tamanho ajustado para o novo ícone */
     fill: white;
 }
