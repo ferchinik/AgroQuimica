@@ -6,47 +6,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section[id]');
 
-    // Função para abrir e fechar o menu mobile
     function toggleMenu() {
         const isExpanded = navbar.classList.toggle('active');
-        // Impede a rolagem do corpo da página quando o menu está aberto
         document.body.style.overflow = isExpanded ? 'hidden' : '';
         hamburger.setAttribute('aria-expanded', isExpanded);
-
-        // Atualiza o ícone do hamburger para um "X" quando o menu está aberto
         const icon = hamburger.querySelector('svg');
         if (isExpanded) {
-            // Ícone "X" para fechar
             icon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
         } else {
-            // Ícone "hambúrguer" padrão
             icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
         }
     }
 
-    // Função para rolagem suave até a seção
     function scrollToSection(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
-
-        // Permite a navegação normal para links que não são âncoras de seção
         if (targetId.length <= 1) {
             window.location.href = targetId;
             return;
         }
-
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-            // Fecha o menu mobile, se estiver aberto, antes de rolar
             if (navbar.classList.contains('active')) {
                 toggleMenu();
             }
-
-            // Calcula a posição de rolagem, compensando a altura do cabeçalho
             const headerOffset = 100;
             const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
             window.scrollTo({
                 top: offsetPosition,
                 behavior: 'smooth'
@@ -54,31 +40,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para destacar a seção ativa na navegação
     function setActiveSection() {
-        const scrollPosition = window.scrollY + 150; // Ajuste para maior precisão
-
+        const scrollPosition = window.scrollY + 150;
         let currentSectionId = '';
         sections.forEach(section => {
             if (scrollPosition >= section.offsetTop) {
                 currentSectionId = '#' + section.getAttribute('id');
             }
         });
-
-        // Caso especial para garantir que o último item seja destacado no final da página
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             const lastSection = document.querySelector('.nav-link[href="#contato"]');
             if (lastSection) currentSectionId = '#contato';
         }
-
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === currentSectionId) {
                 link.classList.add('active');
             }
         });
-
-        // Adiciona uma sombra ao cabeçalho ao rolar a página
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
@@ -86,17 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Adiciona os "escutadores" de eventos
     if (hamburger && navbar) {
         hamburger.addEventListener('click', toggleMenu);
     }
-
     navLinks.forEach(link => {
         link.addEventListener('click', scrollToSection);
     });
-
     window.addEventListener('scroll', setActiveSection);
-    window.addEventListener('load', setActiveSection); // Executa ao carregar a página
+    window.addEventListener('load', setActiveSection);
 
     // --- CÓDIGO DO SLIDER DE DEPOIMENTOS ---
     const slider = document.querySelector('.testimonial-slider');
@@ -110,21 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
         function updateSliderPosition() {
             slider.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
-
         nextButton.addEventListener('click', () => {
             currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
             updateSliderPosition();
         });
-
         prevButton.addEventListener('click', () => {
             currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
             updateSliderPosition();
         });
-
         window.addEventListener('resize', updateSliderPosition);
     }
 
-    // --- CÓDIGO DO TICKER E CALCULADORA DE SOJA ---
+    // --- CÓDIGO DO TICKER E CALCULADORA DE SOJA (ATUALIZADO) ---
     const tickerPriceEl = document.getElementById('ticker-price');
     const tickerChangeEl = document.getElementById('ticker-change');
     const tickerPercentEl = document.getElementById('ticker-percent');
@@ -136,47 +109,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const unitSelect = document.getElementById('unit');
     const resultDiv = document.getElementById('calculator-result');
     const resultValueEl = document.getElementById('result-value');
-    
-    // --- NOVA FUNÇÃO PARA BUSCAR DADOS REAIS DA COTAÇÃO ---
+
+    // --- NOVA FUNÇÃO USANDO API 'FINANCIAL MODELING PREP' ---
     async function fetchSoybeanData() {
-        console.log("Buscando dados de cotação da API...");
-        // URL da API gratuita para cotação de commodities (Soja = SOYBN)
-        const apiUrl = 'https://api.commodities.ai/v1/commodities/SOYBN';
-        
+        console.log("Buscando dados de cotação da API FMP...");
+
+        // ** COLE A SUA CHAVE DE API AQUI **
+        const apiKey = "KUOcZleI4QcBT5mSxIPNBkanTEWka116";
+
+        // ZS=F é o ticker para Soybean Futures
+        const apiUrl = `https://financialmodelingprep.com/api/v3/quote-short/ZS=F?apikey=${apiKey}`;
+
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) {
                 throw new Error(`Erro na API: ${response.statusText}`);
             }
+            // A API retorna um array, pegamos o primeiro item
             const data = await response.json();
-            
-            // A API retorna o preço em dólares. O ticker original mostrava em centavos, então multiplicamos por 100.
-            const priceInCents = data.price * 100;
+            const soyData = data[0];
+
+            if (!soyData) {
+                throw new Error("Dados da soja não encontrados na resposta da API.");
+            }
+
+            // O preço do bushel já vem em dólares, convertemos para centavos como no ticker original.
+            const priceInCents = soyData.price * 100;
+            const changeInDollars = soyData.change;
+            const percentChange = soyData.changesPercentage;
 
             return {
                 price: priceInCents,
-                change: data.change, 
-                percentChange: data.percentChange 
+                change: changeInDollars,
+                percentChange: percentChange
             };
         } catch (error) {
             console.error("Erro ao buscar dados de cotação:", error);
-            // Se a API falhar, retorna os valores antigos para não quebrar o site
-            return {
-                price: 991.00, // Valor de fallback
-                change: -7.50,
-                percentChange: -0.75
-            };
+            // Se a API falhar, exibe uma mensagem no ticker e retorna valores nulos
+            if (tickerPriceEl) tickerPriceEl.textContent = "Erro";
+            if (tickerChangeEl) tickerChangeEl.textContent = "N/A";
+            if (tickerPercentEl) tickerPercentEl.textContent = "N/A";
+            return null; // Retorna nulo para indicar falha
         }
     }
 
-    // Função para atualizar a interface do ticker (sem alterações)
     function updateTickerUI(data) {
-        if (!tickerPriceEl) return;
-        
-        // O ticker mostra o valor em centavos, então usamos o valor já convertido.
+        if (!data || !tickerPriceEl) return; // Não faz nada se os dados forem nulos
+
         tickerPriceEl.textContent = data.price.toFixed(2);
-        
-        // A variação na API já vem em dólares, então não precisa converter.
         tickerChangeEl.textContent = data.change.toFixed(2);
         tickerPercentEl.textContent = `${data.percentChange.toFixed(2)}%`;
 
@@ -194,10 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function refreshTicker() {
         const data = await fetchSoybeanData();
-        updateTickerUI(data);
+        if (data) { // Só atualiza a UI se a busca de dados foi bem-sucedida
+            updateTickerUI(data);
+        }
     }
 
-    // --- LÓGICA DA CALCULADORA (sem alterações) ---
     function calculateSoyValue() {
         const quantity = parseFloat(quantityInput.value);
         if (isNaN(quantity) || quantity <= 0) {
@@ -205,8 +186,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const unit = unitSelect.value;
         const currentBushelPriceInCents = parseFloat(tickerPriceEl.textContent);
+        // Se o ticker estiver com erro, impede o cálculo
+        if (isNaN(currentBushelPriceInCents)) {
+            alert("Não foi possível obter a cotação atual. Tente novamente mais tarde.");
+            return;
+        }
+
+        const unit = unitSelect.value;
         const currentBushelPriceInDollars = currentBushelPriceInCents / 100;
         const BUSHEL_IN_KG = 27.2155;
         const pricePerKg = currentBushelPriceInDollars / BUSHEL_IN_KG;
@@ -222,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
         resultDiv.style.display = 'block';
     }
 
-    // Eventos para abrir e fechar a calculadora
     if (openCalculatorBtn) {
         openCalculatorBtn.addEventListener('click', () => calculatorModal.classList.add('visible'));
     }
@@ -240,9 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateValueBtn.addEventListener('click', calculateSoyValue);
     }
 
-    // Inicia o ticker ao carregar a página
     refreshTicker();
-
-    // Opcional: Atualiza o ticker a cada 5 minutos
-    setInterval(refreshTicker, 300000); 
+    setInterval(refreshTicker, 300000); // Atualiza a cada 5 minutos
 });

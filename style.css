@@ -1654,7 +1654,7 @@ button { background: none; border: none; cursor: pointer; color: var(--color-tex
 }
 
 .ticker-logo img {
-    height: 25px;
+    height: 60px;
     width: auto;
 }
 
