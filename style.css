@@ -1074,6 +1074,23 @@ button {
     transform: scale(1.05);
 }
 
+.btn-discover-more {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 1.5rem;
+    /* Adiciona espaço acima do botão */
+}
+
+.btn-discover-more:hover {
+    background-color: #061d2b;
+    transform: translateY(-3px);
+}
+
 @media (min-width: 1024px) {
     .product-showcase-container {
         grid-template-columns: 1fr 1fr;
