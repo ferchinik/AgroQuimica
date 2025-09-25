@@ -1926,6 +1926,45 @@ button {
     }
 }
 
+.news-section {
+    padding: 6rem 2rem;
+    background-color: #FFFFFF;
+    /* Fundo branco para a seção */
+}
+
+.news-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.news-header {
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+}
+
+.news-header .subtitle {
+    display: block;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.news-header h2 {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.news-header p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text-dark);
+}
+
 /* --- SEÇÃO COTAÇÃO SOJA --- */
 .soy-ticker-section {
     padding: 4rem 2rem;

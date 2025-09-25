@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- FUNCIONALIDADE DO CABEÇALHO ---
+    // (nenhuma alteração nesta parte)
     const header = document.querySelector('.header');
     const hamburger = document.querySelector('.hamburger');
     const navbar = document.querySelector('.navbar');
@@ -75,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', setActiveSection);
 
     // --- CÓDIGO DO SLIDER DE DEPOIMENTOS ---
+    // (nenhuma alteração nesta parte)
     const slider = document.querySelector('.testimonial-slider');
     if (slider) {
         const slides = document.querySelectorAll('.testimonial-card');
@@ -97,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', updateSliderPosition);
     }
 
-    // --- CÓDIGO DO TICKER E CALCULADORA DE SOJA (CORRIGIDO) ---
+    // --- CÓDIGO DO TICKER E CALCULADORA DE SOJA (COM FORMATAÇÃO) ---
     const tickerPriceEl = document.getElementById('ticker-price');
     const tickerChangeEl = document.getElementById('ticker-change');
     const tickerPercentEl = document.getElementById('ticker-percent');
@@ -112,33 +114,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchSoybeanData() {
         console.log("Buscando dados de cotação da API FMP (versão completa)...");
-
-        // ** COLE A SUA CHAVE DE API AQUI **
         const apiKey = "KUOcZleI4QcBT5mSxIPNBkanTEWka116";
-
-        // ** URL CORRIGIDA para a versão completa da API que inclui a variação **
         const apiUrl = `https://financialmodelingprep.com/api/v3/quote/ZS=F?apikey=${apiKey}`;
 
         try {
             const response = await fetch(apiUrl);
-            if (!response.ok) {
-                throw new Error(`Erro na API: ${response.statusText}`);
-            }
+            if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
+
             const data = await response.json();
             const soyData = data[0];
+            if (!soyData) throw new Error("Dados da soja não encontrados na resposta da API.");
 
-            if (!soyData) {
-                throw new Error("Dados da soja não encontrados na resposta da API.");
-            }
-
-            const priceInCents = soyData.price * 100;
-            const changeInDollars = soyData.change;
-            const percentChange = soyData.changesPercentage;
-
+            // **CORREÇÃO**: O preço já vem em dólares, não precisa multiplicar.
             return {
-                price: priceInCents,
-                change: changeInDollars,
-                percentChange: percentChange
+                price: soyData.price, // Retorna o valor em dólares diretamente
+                change: soyData.change,
+                percentChange: soyData.changesPercentage
             };
         } catch (error) {
             console.error("Erro ao buscar dados de cotação:", error);
@@ -152,7 +143,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateTickerUI(data) {
         if (!data || !tickerPriceEl) return;
 
-        tickerPriceEl.textContent = data.price.toFixed(2);
+        // **CORREÇÃO**: Formata o número para o padrão americano (vírgula para milhar)
+        tickerPriceEl.textContent = data.price.toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+
         tickerChangeEl.textContent = data.change.toFixed(2);
         tickerPercentEl.textContent = `${data.percentChange.toFixed(2)}%`;
 
@@ -182,14 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const currentBushelPriceInCents = parseFloat(tickerPriceEl.textContent);
-        if (isNaN(currentBushelPriceInCents)) {
+        // **CORREÇÃO**: Remove as vírgulas do texto para converter para número
+        const currentBushelPriceString = tickerPriceEl.textContent.replace(/,/g, '');
+        const currentBushelPriceInDollars = parseFloat(currentBushelPriceString);
+
+        if (isNaN(currentBushelPriceInDollars)) {
             alert("Não foi possível obter a cotação atual. Tente novamente mais tarde.");
             return;
         }
 
         const unit = unitSelect.value;
-        const currentBushelPriceInDollars = currentBushelPriceInCents / 100;
         const BUSHEL_IN_KG = 27.2155;
         const pricePerKg = currentBushelPriceInDollars / BUSHEL_IN_KG;
         let totalValue = 0;
@@ -204,22 +202,14 @@ document.addEventListener('DOMContentLoaded', () => {
         resultDiv.style.display = 'block';
     }
 
-    if (openCalculatorBtn) {
-        openCalculatorBtn.addEventListener('click', () => calculatorModal.classList.add('visible'));
-    }
-    if (closeCalculatorBtn) {
-        closeCalculatorBtn.addEventListener('click', () => calculatorModal.classList.remove('visible'));
-    }
+    if (openCalculatorBtn) openCalculatorBtn.addEventListener('click', () => calculatorModal.classList.add('visible'));
+    if (closeCalculatorBtn) closeCalculatorBtn.addEventListener('click', () => calculatorModal.classList.remove('visible'));
     if (calculatorModal) {
         calculatorModal.addEventListener('click', (event) => {
-            if (event.target === calculatorModal) {
-                calculatorModal.classList.remove('visible');
-            }
+            if (event.target === calculatorModal) calculatorModal.classList.remove('visible');
         });
     }
-    if (calculateValueBtn) {
-        calculateValueBtn.addEventListener('click', calculateSoyValue);
-    }
+    if (calculateValueBtn) calculateValueBtn.addEventListener('click', calculateSoyValue);
 
     refreshTicker();
     setInterval(refreshTicker, 300000);
