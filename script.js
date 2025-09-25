@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- FUNCIONALIDADE DO CABEÇALHO ---
-    // (nenhuma alteração nesta parte)
     const header = document.querySelector('.header');
     const hamburger = document.querySelector('.hamburger');
     const navbar = document.querySelector('.navbar');
@@ -114,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchSoybeanData() {
         console.log("Buscando dados de cotação da API FMP (versão completa)...");
-        const apiKey = "KUOcZleI4QcBT5mSxIPNBkanTEWka116";
+        const apiKey = "pujzdnNxZypG3dHjFsKz9UnqoHtcsQw8";
         const apiUrl = `https://financialmodelingprep.com/api/v3/quote/ZS=F?apikey=${apiKey}`;
 
         try {
@@ -212,5 +210,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (calculateValueBtn) calculateValueBtn.addEventListener('click', calculateSoyValue);
 
     refreshTicker();
-    setInterval(refreshTicker, 300000);
 });
