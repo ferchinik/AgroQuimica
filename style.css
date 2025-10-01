@@ -277,9 +277,12 @@ button {
 }
 
 .hero-logo-container .hero-logo {
-    max-width: 350px;
+    max-width: 900px;
+    min-width: 500px;
     margin-bottom: 0;
     filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 15px #ffffff);
 }
 
 .hero-logo-container .slogan-1 {
@@ -304,7 +307,7 @@ button {
 
 .hero-logo {
     position: relative;
-    max-width: 500px;
+    max-width: 1300px;
     margin-bottom: 1rem;
     z-index: 1;
     filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1));
