@@ -201,6 +201,7 @@ button {
     .nav-link {
         font-size: 1rem;
         padding: 0.5rem 0.5rem;
+        color: white;
     }
 
     .hamburger {
