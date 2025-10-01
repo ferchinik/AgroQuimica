@@ -114,14 +114,14 @@ button {
     color: var(--color-text-dark);
 }
 
+/* --- CÓDIGO PARA OS LINKS DO MENU (CELULAR) --- */
 .nav-link {
     font-size: 1rem;
-    font-weight: 700;
-    /* Un poco más de grosor */
+    font-weight: 500;
     padding-bottom: 5px;
-    border-bottom: 3px solid transparent;
-    /* Borde más grueso */
-    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease; /* Adicionada transição de cor */
+    color: white; /* Cor do texto para a visualização móvel */
 }
 
 /* Estilo para el link activo y hover */
@@ -198,10 +198,11 @@ button {
         gap: 2rem;
     }
 
-    .nav-link {
+.nav-link {
         font-size: 1rem;
         padding: 0.5rem 0.5rem;
-        color: white;
+        color: black; /* Cor do texto para a visualização em computador */
+        font-weight: 700; /* Opcional: Mantém a fonte mais forte no desktop */
     }
 
     .hamburger {
