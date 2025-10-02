@@ -1,0 +1,96 @@
+/* css/differentiators.css (Otimizado com REM) */
+
+.differentiators {
+    padding: 6rem 2rem;
+    background-color: #FFFFFF;
+}
+
+.differentiators-container {
+    max-width: 75rem;
+    /* ALTERADO: 1200px -> 75rem */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.differentiators-title {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.differentiators-subtitle {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4rem;
+}
+
+.differentiators-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.diff-card {
+    background-color: var(--color-background-section);
+    padding: 2rem 1.5rem;
+    border-radius: 0.75rem;
+    /* ALTERADO: 12px -> 0.75rem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #e0ddd5;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-basis: 100%;
+}
+
+.diff-card:hover {
+    transform: translateY(-0.625rem);
+    /* ALTERADO: -10px -> -0.625rem */
+    box-shadow: 0 0.9375rem 1.875rem rgba(0, 0, 0, 0.1);
+    /* ALTERADO: 15px 30px */
+}
+
+.diff-icon {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+.diff-icon svg {
+    width: 2.5rem;
+    /* ALTERADO: 40px -> 2.5rem */
+    height: 2.5rem;
+    /* ALTERADO: 40px -> 2.5rem */
+}
+
+.diff-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.diff-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    max-width: 18.75rem;
+    /* ALTERADO: 300px -> 18.75rem */
+}
+
+@media (min-width: 768px) {
+    .diff-card {
+        flex-basis: calc(50% - 1rem);
+    }
+}
+
+@media (min-width: 1024px) {
+    .diff-card {
+        flex-basis: calc(33.333% - 1.5rem);
+    }
+}

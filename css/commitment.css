@@ -1,0 +1,146 @@
+/* css/commitment.css (Otimizado com REM) */
+
+.commitment-section {
+    background-color: var(--color-background-section);
+    padding: 5rem 2rem;
+}
+
+.commitment-container {
+    max-width: 75rem;
+    /* ALTERADO: 1200px -> 75rem */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.commitment-header {
+    max-width: 50rem;
+    /* ALTERADO: 800px -> 50rem */
+    margin: 0 auto 4rem auto;
+}
+
+.commitment-header h2 {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.commitment-header p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text-dark);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 0.75rem;
+    /* ALTERADO: 12px -> 0.75rem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.05);
+    /* ALTERADO: 4px 15px */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-0.5rem);
+    /* ALTERADO: -8px -> -0.5rem */
+    box-shadow: 0 0.625rem 1.5625rem rgba(0, 0, 0, 0.1);
+    /* ALTERADO: 10px 25px */
+}
+
+.feature-icon {
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.feature-icon svg {
+    width: 2.8125rem;
+    /* ALTERADO: 45px -> 2.8125rem */
+    height: 2.8125rem;
+    /* ALTERADO: 45px -> 2.8125rem */
+}
+
+.feature-text h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.feature-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+}
+
+.sustainability-showcase {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #FFFFFF;
+    border-radius: 0.75rem;
+    /* ALTERADO: 12px -> 0.75rem */
+    overflow: hidden;
+    box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.1);
+    /* ALTERADO: 10px 30px */
+    margin-top: 4rem;
+}
+
+.sustainability-image-col {
+    min-height: 15.625rem;
+    /* ALTERADO: 250px -> 15.625rem */
+    background-image: linear-gradient(rgba(10, 45, 74, 0.3), rgba(62, 189, 77, 0.3)), url('../img/soja.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.sustainability-text-col {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.sustainability-text-col .feature-icon {
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+}
+
+.sustainability-text-col h3 {
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    font-weight: 900;
+    color: var(--color-primary);
+    margin: 0 0 1rem 0;
+}
+
+.sustainability-text-col p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-dark);
+    max-width: 34.375rem;
+    /* ALTERADO: 550px -> 34.375rem */
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .sustainability-showcase {
+        grid-template-columns: 0.8fr 1.2fr;
+    }
+}

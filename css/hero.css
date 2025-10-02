@@ -1,0 +1,184 @@
+/* css/hero.css (Otimizado com REM) */
+
+/* --- SEÇÃO HERO --- */
+.hero-container {
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('../img/cultivo maiz.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: var(--color-text-light);
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5rem 5% 0;
+    /* ALTERADO: 80px -> 5rem */
+    width: 100%;
+    padding-bottom: 5vh;
+}
+
+.hero-text {
+    opacity: 0;
+    animation: fadeInText 1s ease-out 0.2s forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes fadeInText {
+    to {
+        opacity: 1;
+    }
+}
+
+/* LOGO E SLOGANS */
+.hero-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.hero-logo-container .hero-logo {
+    width: 100%;
+    max-width: 37.5rem;
+    /* ALTERADO: 600px -> 37.5rem */
+    min-width: 18.75rem;
+    /* ALTERADO: 300px -> 18.75rem */
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+.hero-logo-container .slogan-1 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.3;
+}
+
+.slogan-2 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* --- IMAGENS EM CÍRCULO (VISÍVEIS APENAS EM DESKTOP) --- */
+
+.hero-images {
+    display: none;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: 31.25rem;
+    /* ALTERADO: 500px -> 31.25rem */
+    aspect-ratio: 500 / 480;
+    margin: 0 auto;
+}
+
+.circle-image {
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all 0.4s ease-out;
+    opacity: 0;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1), 0 8px 30px rgba(0, 0, 0, 0.15);
+    grid-area: 1 / 1 / -1 / -1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+}
+
+.circle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* REGRAS DE TAMANHO E POSIÇÃO */
+#circle1 {
+    width: 65%;
+    transform: translateY(-25%);
+    z-index: 1;
+    --transform-final: translateY(-25%);
+}
+
+#circle2 {
+    width: 42%;
+    transform: translate(-45%, 40%);
+    z-index: 2;
+    --transform-final: translate(-45%, 40%);
+}
+
+#circle3 {
+    width: 42%;
+    transform: translate(45%, 40%);
+    z-index: 2;
+    --transform-final: translate(45%, 40%);
+}
+
+/* ANIMAÇÃO */
+@keyframes fadeInCircle {
+    from {
+        opacity: 0;
+        transform: var(--transform-final) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: var(--transform-final) scale(1);
+    }
+}
+
+.circle-image:hover {
+    transform: var(--transform-final) scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15), 0 12px 35px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border-color: rgba(255, 255, 255, 1);
+}
+
+/* --- ESTILOS RESPONSIVOS DA SEÇÃO HERO --- */
+@media (min-width: 1024px) {
+    .main-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hero-text {
+        flex-basis: 50%;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .hero-logo-container {
+        align-items: flex-start;
+    }
+
+    .hero-images {
+        display: grid;
+        flex-basis: 50%;
+    }
+
+    #circle1 {
+        animation: fadeInCircle 0.7s ease-out 0.4s forwards;
+    }
+
+    #circle2 {
+        animation: fadeInCircle 0.7s ease-out 0.6s forwards;
+    }
+
+    #circle3 {
+        animation: fadeInCircle 0.7s ease-out 0.8s forwards;
+    }
+}

@@ -6,7 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agro Química - El Campo es nuestro compromiso</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/about-us.css">
+    <link rel="stylesheet" href="css/locations.css">
+    <link rel="stylesheet" href="css/experience.css">
+    <link rel="stylesheet" href="css/differentiators.css">
+    <link rel="stylesheet" href="css/product-showcase.css">
+    <link rel="stylesheet" href="css/testimonials.css">
+    <link rel="stylesheet" href="css/video-section.css">
+    <link rel="stylesheet" href="css/commitment.css">
+    <link rel="stylesheet" href="css/sustainability-policy.css">
+    <link rel="stylesheet" href="css/news-section.css">
+    <link rel="stylesheet" href="css/soy-ticker.css">
+    <link rel="stylesheet" href="css/footer.css">
+
     <link rel="shortcut icon" href="img/aqdp-ico.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,6 +79,42 @@
         </main>
     </div>
 
+    <section class="soy-ticker-section">
+        <div class="ticker-container">
+            <div class="ticker-bar">
+                <div class="ticker-logo">
+                    <img src="img/view2x.png" alt="CME Group">
+                </div>
+                <div class="ticker-item">
+                    <span class="ticker-label">Último Bushel</span>
+                    <span class="ticker-value" id="ticker-price">991.00</span>
+                </div>
+                <div class="ticker-item">
+                    <span class="ticker-label">Variación</span>
+                    <span class="ticker-value" id="ticker-change">-7.50</span>
+                </div>
+                <div class="ticker-item">
+                    <span class="ticker-label">Variación %</span>
+                    <span class="ticker-value" id="ticker-percent">-0.75%</span>
+                </div>
+                <div class="ticker-action">
+                    <button id="open-calculator-btn" class="btn-calculate">Calcule el Valor de su Soja</button>
+                </div>
+            </div>
+            <div class="ticker-link-wrapper">
+                <a href="https://www.cmegroup.com/markets/agriculture/oilseeds/soybean.html" target="_blank"
+                    rel="noopener noreferrer" class="ticker-source-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"></path>
+                    </svg>
+                    <span>Fuente: CME Group</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section class="about-us" id="empresa">
         <div class="about-us-container">
             <div class="about-us-image-col">
@@ -114,6 +166,7 @@
                     </div>
                     <div class="location-content">
                         <h3 class="location-name">Casa Central</h3>
+                        <p class="location-department">Departamento Alto Paraná</p>
                         <p class="location-address">
                             Localizada en la Av. Paraná, esquina con Luis Alberto del Paraná – Zona Comercial, Paraná
                             Country Club, Hernandarias, Alto Paraná – Paraguai.
@@ -162,13 +215,12 @@
                     productos originales para cada necesidad del productor moderno.</p>
             </div>
             <div class="experience-diagram-col">
-                <img src="img/linea.png"
-                    alt="Diagrama de la línea completa de productos originales de Agro Química">
+                <img src="img/linea.png" alt="Diagrama de la línea completa de productos originales de Agro Química">
             </div>
         </div>
         <div class="decorative-icon icon-molecule">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
                 <path
                     d="M12 2v2.35c0 .39.24.74.6.9l3.45 1.65c.35.17.6.51.6.9v2.2c0 .39-.24.74-.6.9l-3.45 1.65c-.35.17-.6.51-.6.9V15" />
                 <path d="m12 15 3.45-1.65c.35-.17.6-.51.6-.9V10.3c0-.39-.24-.74-.6-.9L12 7.75" />
@@ -178,8 +230,8 @@
             </svg>
         </div>
         <div class="decorative-icon icon-flask">
-            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M10 2v7.31" />
                 <path d="M14 9.31V2" />
                 <path d="M14 9.31h-4" />
@@ -269,21 +321,68 @@
 
     <section class="product-showcase" id="productos">
         <div class="product-showcase-container">
+
             <div class="product-info">
                 <span class="subtitle">TRATAMIENTO DE SEMILLAS</span>
-                <h2>Kit Completo +Bio</h2>
-                <p>Una solución integral que combina lo mejor de la tecnología química y biológica para proteger sus
+                <h2>Soluciones para cada etapa del cultivo</h2>
+                <p>
+                    Una solución integral que combina lo mejor de la tecnología química y biológica para proteger sus
                     semillas desde el principio. Garantiza una germinación vigorosa y un desarrollo inicial saludable
-                    para maximizar el potencial de su cultivo.</p>
-
-                <a href="https://api.whatsapp.com/send?phone=595983133443&text=%C2%A1Hola%20%F0%9F%91%8B!%20Gracias%20por%20contactarte%20con%20Agroqu%C3%ADmica%20Biochemical%20.%0AHorario%3A%20Lunes%20a%20Viernes%20de%2007%3A30%20a%2017%3A30.%0APara%20poder%20atenderte%20de%20la%20mejor%20manera%2C%20por%20favor%20ind%C3%ADcanos%3A%0A1%EF%B8%8F%E2%83%A3%20El%20producto%20que%20te%20interesa%C2%A0%0A2%EF%B8%8F%E2%83%A3%20La%20zona%20o%20ciudad%20donde%20resides%C2%A0%0A%0AEn%20breve%20uno%20de%20nuestros%20asesores%20se%20pondr%C3%A1%20en%20contacto%20contigo%20%E2%9C%85.%20Muchas%20Gracias%20por%20elegirnos"
-                    target="_blank" rel="noopener noreferrer" class="btn-discover-more">Descubre Más</a>
+                    para maximizar el potencial de su cultivo.
+                </p>
             </div>
-            <div class="product-images">
-                <div class="main-product-image">
-                    <img src="img/kitcompleto.png" alt="Caixa do produto Kit Completo +Bio">
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-item">
+                        <img src="img/kitcompleto.png" alt="Produto Kit Completo +Bio">
+                        <span class="item-label">Kit Completo +Bio</span>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/kitcompleto.png" alt="Produto Exemplo 2">
+                        <span class="item-label">Produto Exemplo 2</span>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/kitcompleto.png" alt="Produto Exemplo 3">
+                        <span class="item-label">Produto Exemplo 3</span>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/kitcompleto.png" alt="Produto Exemplo 4">
+                        <span class="item-label">Produto Exemplo 4</span>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/kitcompleto.png" alt="Produto Exemplo 5">
+                        <span class="item-label">Produto Exemplo 5</span>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="img/kitcompleto.png" alt="Produto Kit Completo +Bio">
+                        <span class="item-label">Kit Completo +Bio</span>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/kitcompleto.png" alt="Produto Exemplo 2">
+                        <span class="item-label">Produto Exemplo 2</span>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/kitcompleto.png" alt="Produto Exemplo 3">
+                        <span class="item-label">Produto Exemplo 3</span>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/kitcompleto.png" alt="Produto Exemplo 4">
+                        <span class="item-label">Produto Exemplo 4</span>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/kitcompleto.png" alt="Produto Exemplo 5">
+                        <span class="item-label">Produto Exemplo 5</span>
+                    </div>
                 </div>
             </div>
+
+            <a href="https://api.whatsapp.com/send?phone=595983133443" target="_blank" rel="noopener noreferrer"
+                class="btn-discover-more">
+                Descubre Más
+            </a>
+
         </div>
     </section>
 
@@ -297,204 +396,214 @@
             </div>
 
             <div class="testimonial-slider-wrapper">
-                <div class="testimonial-slider">
-                    <div class="testimonial-card">
-                        <p class="quote">“Es el segundo año que uso el programa Producir. Este año aguantó más la seca.
-                            Quedó con bastante carga. Si no faltase agua, al final tendríamos una productividad aún
-                            mayor.”</p>
-                        <div class="author-info">
-                            <img src="img/1bf9c18cadec4c00c87b07c0dfcd2023af6fd011 (1)[1].png"
-                                alt="Foto de Marcos Mallmann Meinhart" class="author-pic">
-                            <div class="author-details">
-                                <span class="author-name">Marcos Mallmann Meinhart</span>
-                                <div class="star-rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="quote">“Hace 2 años que estamos usando 100% de mi área los productos Agro Química con
-                            el Programa Nutricional Producir ya sea para soja o maíz. Cada año vengo aumentando el
-                            promedio de producción, por esto recomiendo los productos.”</p>
-                        <div class="author-info">
-                            <img src="img/franz_guenther_unger-300x300[1].png" alt="Foto de Ana Villalba"
-                                class="author-pic">
-                            <div class="author-details">
-                                <span class="author-name">Ana Villalba</span>
-                                <div class="star-rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                </div>
+                <div class="testimonial-slider-container">
+                    <div class="testimonial-slider">
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="quote">“Me gustó el programa producir. Tuve una buena producción y voy a seguir
-                            usando.”</p>
-                        <div class="author-info">
-                            <img src="img/Johan_Loewen_Klassen-300x300[1].png" alt="Foto de Carlos Giménez"
-                                class="author-pic">
-                            <div class="author-details">
-                                <span class="author-name">Carlos Giménez</span>
-                                <div class="star-rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
+                        <div class="testimonial-card">
+                            <p class="quote">“Es el segundo año que uso el programa Producir. Este año aguantó más la
+                                seca.
+                                Quedó con bastante carga. Si no faltase agua, al final tendríamos una productividad aún
+                                mayor.”</p>
+                            <div class="author-info">
+                                <img src="img/1bf9c18cadec4c00c87b07c0dfcd2023af6fd011 (1)[1].png"
+                                    alt="Foto de Marcos Mallmann Meinhart" class="author-pic">
+                                <div class="author-details">
+                                    <span class="author-name">Marcos Mallmann Meinhart</span>
+                                    <div class="star-rating">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="testimonial-card">
-                        <p class="quote">"Con el programa Producir obtuve un buen promedio de rendimiento, llegando en
-                            una parcela 4,500Kg/ha. Recomiendo el Programa Producir."</p>
-                        <div class="author-info">
-                            <img src="img/mauro_bastiane-300x300[1].png" alt="Foto de Peter Zacharias"
-                                class="author-pic">
-                            <div class="author-details">
-                                <span class="author-name">Peter Zacharias</span>
-                                <div class="star-rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
+                        <div class="testimonial-card">
+                            <p class="quote">“Hace 2 años que estamos usando 100% de mi área los productos Agro Química
+                                con
+                                el Programa Nutricional Producir ya sea para soja o maíz. Cada año vengo aumentando el
+                                promedio de producción, por esto recomiendo los productos.”</p>
+                            <div class="author-info">
+                                <img src="img/franz_guenther_unger-300x300[1].png" alt="Foto de Ana Villalba"
+                                    class="author-pic">
+                                <div class="author-details">
+                                    <span class="author-name">Ana Villalba</span>
+                                    <div class="star-rating">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="testimonial-card">
-                        <p class="quote">"Vengo usando por varios años la línea Samarita con buenísimos resultados.
-                            Usamos el programa Producir para tener altos rendimientos. Uso y recomiendo a mis colegas."
-                        </p>
-                        <div class="author-info">
-                            <img src="img/peter_zacharias_wieber-300x300[1].png" alt="Foto de Franz Guenther"
-                                class="author-pic">
-                            <div class="author-details">
-                                <span class="author-name">Franz Guenther</span>
-                                <div class="star-rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="currentColor">
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                    </svg>
+                        <div class="testimonial-card">
+                            <p class="quote">“Me gustó el programa producir. Tuve una buena producción y voy a seguir
+                                usando.”</p>
+                            <div class="author-info">
+                                <img src="img/Johan_Loewen_Klassen-300x300[1].png" alt="Foto de Carlos Giménez"
+                                    class="author-pic">
+                                <div class="author-details">
+                                    <span class="author-name">Carlos Giménez</span>
+                                    <div class="star-rating">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="testimonial-card">
+                            <p class="quote">"Con el programa Producir obtuve un buen promedio de rendimiento, llegando
+                                en
+                                una parcela 4,500Kg/ha. Recomiendo el Programa Producir."</p>
+                            <div class="author-info">
+                                <img src="img/mauro_bastiane-300x300[1].png" alt="Foto de Peter Zacharias"
+                                    class="author-pic">
+                                <div class="author-details">
+                                    <span class="author-name">Peter Zacharias</span>
+                                    <div class="star-rating">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <p class="quote">"Vengo usando por varios años la línea Samarita con buenísimos resultados.
+                                Usamos el programa Producir para tener altos rendimientos. Uso y recomiendo a mis
+                                colegas."
+                            </p>
+                            <div class="author-info">
+                                <img src="img/peter_zacharias_wieber-300x300[1].png" alt="Foto de Franz Guenther"
+                                    class="author-pic">
+                                <div class="author-details">
+                                    <span class="author-name">Franz Guenther</span>
+                                    <div class="star-rating">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
                 <button class="slider-btn prev" aria-label="Testimonio anterior">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -717,42 +826,6 @@
         </div>
     </section>
 
-    <section class="soy-ticker-section">
-        <div class="ticker-container">
-            <div class="ticker-bar">
-                <div class="ticker-logo">
-                    <img src="img/cme-group-logo_primary.jpg" alt="CME Group">
-                </div>
-                <div class="ticker-item">
-                    <span class="ticker-label">Último Bushel</span>
-                    <span class="ticker-value" id="ticker-price">991.00</span>
-                </div>
-                <div class="ticker-item">
-                    <span class="ticker-label">Variación</span>
-                    <span class="ticker-value" id="ticker-change">-7.50</span>
-                </div>
-                <div class="ticker-item">
-                    <span class="ticker-label">Variación %</span>
-                    <span class="ticker-value" id="ticker-percent">-0.75%</span>
-                </div>
-                <div class="ticker-action">
-                    <button id="open-calculator-btn" class="btn-calculate">Calcule el Valor de su Soja</button>
-                </div>
-            </div>
-            <div class="ticker-link-wrapper">
-                <a href="https://www.cmegroup.com/markets/agriculture/oilseeds/soybean.html" target="_blank"
-                    rel="noopener noreferrer" class="ticker-source-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"></path>
-                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"></path>
-                    </svg>
-                    <span>Fuente: CME Group</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <footer class="footer" id="contacto">
         <div class="footer-container">
             <div class="footer-col">
@@ -866,7 +939,7 @@
 
     <script src="script.js"></script>
 
-    <a href="https://api.whatsapp.com/send?phone=595983133443&text=%C2%A1Hola%20%F0%9F%91%8B!%20Gracias%20por%20contactarte%20con%20Agroqu%C3%ADmica%20Biochemical%20.%0AHorario%3A%20Lunes%20a%20Viernes%20de%2007%3A30%20a%2017%3A30.%0APara%20poder%20atenderte%20de%20la%20mejor%20manera%2C%20por%20favor%20ind%C3%ADcanos%3A%0A1%EF%B8%8F%E2%83%A3%20El%20producto%20que%20te%20interesa%C2%A0%0A2%EF%B8%8F%E2%83%A3%20La%20zona%20o%20ciudad%20donde%20resides%C2%A0%0A%0AEn%20breve%20uno%20de%20nuestros%20asesores%20se%20pondr%C3%A1%20en%20contacto%20contigo%20%E2%9C%85.%20Muchas%20Gracias%20por%20elegirnos"
+    <a href="https://api.whatsapp.com/send?phone=595983133443&text=%C2%A1Hola%20%F0%9F%91%8B!%20Gracias%20por%20contactarte%20con%20Agro%20Qu%C3%ADmica%20Biochemical%20.%0AHorario%3A%20Lunes%20a%20Viernes%20de%2007%3A30%20a%2017%3A30.%0APara%20poder%20atenderte%20de%20la%20mejor%20manera%2C%20por%20favor%20ind%C3%ADcanos%3A%0A1%EF%B8%8F%E2%83%A3%20El%20producto%20que%20te%20interesa%C2%A0%0A2%EF%B8%8F%E2%83%A3%20La%20zona%20o%20ciudad%20donde%20resides%C2%A0%0A%0AEn%20breve%20uno%20de%20nuestros%20asesores%20se%20pondr%C3%A1%20en%20contacto%20contigo%20%E2%9C%85.%20Muchas%20Gracias%20por%20elegirnos"
         class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path

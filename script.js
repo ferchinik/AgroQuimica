@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     // --- FUNCIONALIDADE DO CABEÇALHO ---
     const header = document.querySelector('.header');
     const hamburger = document.querySelector('.hamburger');
@@ -74,30 +75,77 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', setActiveSection);
     window.addEventListener('load', setActiveSection);
 
-    // --- CÓDIGO DO SLIDER DE DEPOIMENTOS ---
-    const slider = document.querySelector('.testimonial-slider');
-    if (slider) {
-        const slides = document.querySelectorAll('.testimonial-card');
-        const prevButton = document.querySelector('.slider-btn.prev');
-        const nextButton = document.querySelector('.slider-btn.next');
-        let currentIndex = 0;
-        const totalSlides = slides.length;
 
-        function updateSliderPosition() {
-            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    // --- CÓDIGO DO SLIDER DE DEPOIMENTOS (VERSÃO FINAL COM LOOP INFINITO) ---
+    const sliderWrapper = document.querySelector('.testimonial-slider-wrapper');
+    if (sliderWrapper) {
+        const slider = sliderWrapper.querySelector('.testimonial-slider');
+        const prevButton = sliderWrapper.querySelector('.slider-btn.prev');
+        const nextButton = sliderWrapper.querySelector('.slider-btn.next');
+
+        if (slider && prevButton && nextButton) {
+            let slides = Array.from(slider.children);
+            let isTransitioning = false;
+            let currentIndex = 1; // Começa no primeiro slide "real"
+
+            // Clonar o primeiro e o último slide para o efeito de loop
+            const firstClone = slides[0].cloneNode(true);
+            const lastClone = slides[slides.length - 1].cloneNode(true);
+
+            slider.appendChild(firstClone);
+            slider.insertBefore(lastClone, slides[0]);
+
+            // Atualizar a lista de slides
+            slides = Array.from(slider.children);
+
+            const setSliderPosition = () => {
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            };
+
+            const jumpToPosition = () => {
+                slider.style.transition = 'none';
+                setSliderPosition();
+            }
+
+            jumpToPosition(); // Posição inicial
+
+            // Listener para o "salto" invisível após a animação
+            slider.addEventListener('transitionend', () => {
+                if (currentIndex === 0) { // Chegou no clone do último (no começo)
+                    currentIndex = slides.length - 2;
+                    jumpToPosition();
+                } else if (currentIndex === slides.length - 1) { // Chegou no clone do primeiro (no fim)
+                    currentIndex = 1;
+                    jumpToPosition();
+                }
+                isTransitioning = false;
+            });
+
+            // Funções de clique
+            const moveToNext = () => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex++;
+                slider.style.transition = 'transform 0.5s ease-in-out';
+                setSliderPosition();
+            };
+
+            const moveToPrev = () => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex--;
+                slider.style.transition = 'transform 0.5s ease-in-out';
+                setSliderPosition();
+            };
+
+            nextButton.addEventListener('click', moveToNext);
+            prevButton.addEventListener('click', moveToPrev);
+            window.addEventListener('resize', jumpToPosition);
         }
-        nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
-            updateSliderPosition();
-        });
-        prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
-            updateSliderPosition();
-        });
-        window.addEventListener('resize', updateSliderPosition);
     }
 
-    // --- CÓDIGO DO TICKER E CALCULADORA (FMP API CORRIGIDA) ---
+
+    // --- CÓDIGO DO TICKER E CALCULADORA ---
     const tickerPriceEl = document.getElementById('ticker-price');
     const tickerChangeEl = document.getElementById('ticker-change');
     const tickerPercentEl = document.getElementById('ticker-percent');
@@ -112,21 +160,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchSoybeanData() {
         console.log("Buscando dados de cotação da FMP API...");
-        
-        // ** COLE A SUA NOVA CHAVE DE API DA NOVA CONTA AQUI **
-        const apiKey = "KUOcZleI4QcBT5mSxIPNBkanTEWka116"; 
-        
-        // Endpoint correto para commodities
+        const apiKey = "KUOcZleI4QcBT5mSxIPNBkanTEWka116";
         const apiUrl = `https://financialmodelingprep.com/api/v3/quote/ZS=F?apikey=${apiKey}`;
 
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
-            
+
             const data = await response.json();
-            const soyData = data[0]; 
+            const soyData = data[0];
             if (!soyData) throw new Error("Dados da soja não encontrados na resposta da API.");
-            
+
             return {
                 price: soyData.price,
                 change: soyData.change,
@@ -134,9 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         } catch (error) {
             console.error("Erro ao buscar dados de cotação:", error);
-            if(tickerPriceEl) tickerPriceEl.textContent = "Erro";
-            if(tickerChangeEl) tickerChangeEl.textContent = "N/A";
-            if(tickerPercentEl) tickerPercentEl.textContent = "N/A";
+            if (tickerPriceEl) tickerPriceEl.textContent = "Erro";
+            if (tickerChangeEl) tickerChangeEl.textContent = "N/A";
+            if (tickerPercentEl) tickerPercentEl.textContent = "N/A";
             return null;
         }
     }
@@ -148,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
-        
+
         tickerChangeEl.textContent = data.change.toFixed(2);
         tickerPercentEl.textContent = `${data.percentChange.toFixed(2)}%`;
 
@@ -172,12 +216,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function calculateSoyValue() {
+        if (!quantityInput || !unitSelect || !tickerPriceEl || !resultValueEl || !resultDiv) return;
+
         const quantity = parseFloat(quantityInput.value);
         if (isNaN(quantity) || quantity <= 0) {
             alert("Por favor, insira uma quantidade válida.");
             return;
         }
-        
+
         const currentBushelPriceString = tickerPriceEl.textContent.replace(/,/g, '');
         const currentBushelPriceInDollars = parseFloat(currentBushelPriceString);
 
@@ -210,6 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (calculateValueBtn) calculateValueBtn.addEventListener('click', calculateSoyValue);
 
-    // Carrega o valor uma única vez
-    refreshTicker();
+    // Carrega o valor do ticker
+    if (tickerPriceEl) {
+        refreshTicker();
+    }
 });

@@ -1,0 +1,147 @@
+/* css/product-showcase.css (Reconstruído para o Carrossel) */
+
+.product-showcase {
+    background-color: var(--color-background-section);
+    padding: 6rem 2rem;
+}
+
+.product-showcase-container {
+    max-width: 75rem;
+    /* 1200px */
+    margin: 0 auto;
+    display: flex;
+    /* Usando flexbox para alinhar tudo */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* --- TÍTULO E DESCRIÇÃO --- */
+.product-info {
+    max-width: 56.25rem;
+    /* 700px */
+    margin-bottom: 3rem;
+}
+
+.product-info .subtitle {
+    display: block;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.product-info h2 {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.product-info p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* --- ESTRUTURA DO CARROSSEL --- */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    /* Esconde os itens que estão fora da "janela" */
+    position: relative;
+    /* Efeito de fade nas laterais para suavizar a entrada e saída dos itens */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    /* Animação: 5 itens * 15rem de largura + 2rem de gap = 85rem. Duração pode ser ajustada. */
+    width: calc((15rem + 2rem) * 10);
+    /* (largura do item + gap) * número total de itens (originais + duplicados) */
+    animation: scroll 40s linear infinite;
+}
+
+/* --- ANIMAÇÃO DO SCROLL --- */
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        /* Move a faixa para a esquerda exatamente pela metade da sua largura total */
+        transform: translateX(calc(-1 * (15rem + 2rem) * 5));
+    }
+}
+
+/* --- ITENS INDIVIDUAIS DO CARROSSEL --- */
+.carousel-item {
+    background-color: #fff;
+    border-radius: 0.75rem;
+    /* 12px */
+    padding: 1.5rem;
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+    width: 15rem;
+    /* Largura fixa para cada item */
+    height: 20rem;
+    /* Altura fixa para cada item */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 70%;
+    /* Define a área para a imagem */
+    object-fit: contain;
+    /* ESSA É A SOLUÇÃO: Garante que a imagem caiba inteira, sem distorcer */
+    margin-bottom: 1rem;
+}
+
+.item-label {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1rem;
+    height: 30%;
+    /* Define a área para o texto */
+}
+
+/* --- EFEITOS DE HOVER --- */
+
+/* 1. Pausa a animação do carrossel ao passar o mouse em cima */
+.carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+/* 2. Destaca o item específico que está com o mouse em cima */
+.carousel-item:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0.5rem 2rem rgba(10, 45, 74, 0.2);
+    z-index: 10;
+}
+
+/* --- BOTÃO "DESCUBRE MÁS" --- */
+.btn-discover-more {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    /* 8px */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 3rem;
+    /* Espaçamento abaixo do carrossel */
+    text-decoration: none;
+}
+
+.btn-discover-more:hover {
+    background-color: #061d2b;
+    transform: translateY(-0.25rem);
+}

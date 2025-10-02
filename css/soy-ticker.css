@@ -1,0 +1,269 @@
+.soy-ticker-section {
+    padding: 4rem 2rem;
+    background-image: url('../img/soja.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.soy-ticker-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(245, 243, 237, 0.5);
+}
+
+.ticker-container {
+    max-width: 75rem;
+    /* 1200px */
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.ticker-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    /* 12px */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.1);
+    /* 8px 32px */
+}
+
+.ticker-logo {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(10, 45, 74, 0.1);
+    width: 100%;
+    text-align: center;
+}
+
+.ticker-logo img {
+    height: 2.25rem;
+    /* Ajustado para um tamanho bom, ajuste se necessário */
+    width: auto;
+    /* Mantém a proporção original da imagem */
+    filter: drop-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.4));
+    /* ADICIONADO: Sombra sutil no logo */
+}
+
+.ticker-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ticker-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.ticker-value {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--color-primary);
+}
+
+.ticker-value.negative {
+    color: #c62828;
+}
+
+.ticker-value.positive {
+    color: #2E7D32;
+}
+
+.ticker-action {
+    width: 100%;
+}
+
+.btn-calculate {
+    display: block;
+    width: 100%;
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    /* 8px */
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-calculate:hover {
+    background-color: #31a13e;
+}
+
+.ticker-link-wrapper {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.ticker-source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #e0f2f1;
+    color: var(--color-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 3.125rem;
+    /* 50px */
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 1px solid #b2dfdb;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.ticker-source-link:hover {
+    background-color: #b2dfdb;
+    transform: scale(1.05);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #FFFFFF;
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    /* 12px */
+    box-shadow: 0 0.625rem 2.5rem rgba(0, 0, 0, 0.2);
+    /* 10px 40px */
+    width: 90%;
+    max-width: 31.25rem;
+    /* 500px */
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: #888;
+    line-height: 1;
+    padding: 0;
+}
+
+.modal-close-btn:hover {
+    color: #333;
+}
+
+.modal-content h2 {
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 900;
+}
+
+.calculator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    /* 8px */
+    font-family: var(--font-main);
+    font-size: 1rem;
+}
+
+.calculator-result {
+    margin-top: 2rem;
+    background-color: var(--color-background-section);
+    border-radius: 0.5rem;
+    /* 8px */
+    padding: 1.5rem;
+    text-align: center;
+    display: none;
+}
+
+.calculator-result p {
+    color: var(--color-primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+#result-value {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-secondary);
+}
+
+
+@media(min-width: 992px) {
+    .ticker-bar {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1.5fr repeat(3, 1fr) 2fr;
+        gap: 2rem;
+        padding: 1.5rem 2.5rem;
+    }
+
+    .ticker-logo {
+        padding: 0;
+        border: none;
+        text-align: left;
+    }
+
+    .ticker-item {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .ticker-action {
+        width: auto;
+    }
+}

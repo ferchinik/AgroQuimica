@@ -1,0 +1,56 @@
+/* css/global.css */
+
+/* --- CONFIGURAÇÕES GLOBAIS E VARIÁVEIS --- */
+:root {
+    --font-main: 'Montserrat', sans-serif;
+    --color-text-light: #FFFFFF;
+    --color-text-dark: #333333;
+    --color-primary: #0A2D4A;
+    --color-secondary: #3EBD4D;
+    --color-background-section: #F5F3ED;
+    --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.3);
+    --glow-light: rgba(255, 255, 255, 0.4);
+    --glow-dark: rgba(0, 200, 255, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: #ffffff;
+    color: var(--color-text-dark);
+    overflow-x: hidden;
+}
+
+/* Estilos de reset para elementos comuns */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-light);
+    font-family: var(--font-main);
+    /* Garante que botões usem a fonte principal */
+}
+
+/* Garante que imagens não quebrem o layout */
+img {
+    max-width: 100%;
+    display: block;
+}

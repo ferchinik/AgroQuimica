@@ -1,0 +1,140 @@
+/* css/experience.css (Otimizado com REM e controle de SVGs) */
+
+.experience {
+    background-color: var(--color-background-section);
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.experience-container {
+    max-width: 75rem;
+    /* ALTERADO: 1200px -> 75rem */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.experience-text-col {
+    text-align: center;
+}
+
+.experience-text-col .subtitle {
+    display: block;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.experience-text-col h2 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.experience-text-col p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 31.25rem;
+    /* ALTERADO: 500px -> 31.25rem */
+    margin: 0 auto;
+}
+
+.experience-diagram-col img {
+    height: auto;
+    animation: fadeInScale 1.2s ease-out forwards, floatDiagram 3s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes floatDiagram {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-1.125rem) scale(1.03);
+    }
+
+    /* ALTERADO: -18px -> -1.125rem */
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.decorative-icon {
+    position: absolute;
+    color: #d1cdc0;
+    z-index: 1;
+    opacity: 0.6;
+    display: none;
+}
+
+/* ADICIONADO: Controle de tamanho dos SVGs */
+.icon-molecule svg {
+    width: 6.25rem;
+    /* 100px */
+    height: 6.25rem;
+    /* 100px */
+}
+
+.icon-flask svg {
+    width: 5rem;
+    /* 80px */
+    height: 5rem;
+    /* 80px */
+}
+
+.icon-molecule {
+    top: 10%;
+    left: 5%;
+}
+
+.icon-flask {
+    bottom: 10%;
+    right: 5%;
+}
+
+@media (min-width: 1050px) {
+    .experience-container {
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 5rem;
+    }
+
+    .experience-diagram-col img {
+        max-width: 40.625rem;
+        /* ALTERADO: 650px -> 40.625rem */
+        width: 100%;
+        height: auto;
+    }
+
+    .experience-text-col {
+        text-align: left;
+    }
+
+    .experience-text-col p {
+        margin: 0;
+    }
+
+    .decorative-icon {
+        display: block;
+    }
+}

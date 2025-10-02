@@ -1,0 +1,110 @@
+/* css/locations.css (Otimizado com REM) */
+
+.locations {
+    background-color: #FFFFFF;
+    padding: 6rem 2rem;
+}
+
+.locations-container {
+    max-width: 75rem;
+    /* ALTERADO: 1200px -> 75rem */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.locations-title {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 4rem;
+    text-align: left;
+}
+
+.locations-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+.location-card {
+    background-color: var(--color-background-section);
+    border-radius: 0.75rem;
+    /* ALTERADO: 12px -> 0.75rem */
+    overflow: hidden;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.1);
+    /* ALTERADO: 4px 15px */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-0.5rem);
+    /* ALTERADO: -8px -> -0.5rem */
+    box-shadow: 0 0.625rem 1.5625rem rgba(0, 0, 0, 0.15);
+    /* ALTERADO: 10px 25px */
+}
+
+.location-image-wrapper {
+    width: 100%;
+    height: 15.625rem;
+    /* ALTERADO: 250px -> 15.625rem */
+    overflow: hidden;
+}
+
+.location-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.location-content {
+    padding: 2rem;
+}
+
+.location-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.location-department {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+}
+
+.location-address {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+}
+
+@media (min-width: 768px) {
+    .locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Centraliza o último card se for ímpar */
+    .location-card:last-child:nth-child(odd) {
+        grid-column: span 2;
+        max-width: calc(50% - 1.5rem);
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .locations-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Reseta a regra anterior para layout de 3 colunas */
+    .location-card:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: none;
+        margin: 0;
+    }
+}

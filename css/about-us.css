@@ -1,0 +1,113 @@
+/* css/about-us.css (Com ajuste de posição da imagem) */
+
+.about-us {
+    background-color: var(--color-background-section);
+    padding: 6rem 0;
+    position: relative;
+}
+
+.about-us-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.about-us-image-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 18.75rem;
+    overflow: hidden;
+}
+
+.about-us-image-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* Posição padrão para mobile */
+    border-radius: 0;
+}
+
+.about-us-text-col {
+    color: var(--color-text-dark);
+    position: relative;
+    padding-right: 1.25rem;
+}
+
+.about-us-text-col h2 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.about-us-text-col p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.decorative-arrows {
+    display: none;
+    position: absolute;
+    right: -1.25rem;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.decorative-arrows svg {
+    fill: var(--color-secondary);
+    width: 1.875rem;
+    height: 1.875rem;
+    margin-left: -0.625rem;
+    opacity: 0.5;
+    display: block;
+}
+
+.decorative-arrows.top {
+    top: -1.25rem;
+}
+
+.decorative-arrows.bottom {
+    bottom: -1.25rem;
+}
+
+@media (min-width: 992px) {
+    .about-us-container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 4rem;
+        max-width: 87.5rem;
+    }
+
+    .about-us-image-col {
+        height: 31.25rem;
+        justify-content: flex-start;
+        clip-path: ellipse(65% 100% at 20% 50%);
+        position: relative;
+        left: -10%;
+    }
+
+    .about-us-image-col img {
+        width: 130%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% center;
+        /* ALTERADO: 70% -> 50% para centralizar a foto */
+    }
+
+    .about-us-text-col {
+        padding-right: 0;
+        padding-left: 2rem;
+    }
+
+    .decorative-arrows {
+        display: flex;
+        flex-direction: column;
+        right: -1.875rem;
+    }
+}

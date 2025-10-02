@@ -1,0 +1,72 @@
+/* css/video-section.css (Com o efeito de onda restaurado) */
+
+.video-section {
+    position: relative;
+    background-color: var(--color-primary);
+    padding: 6rem 2rem 10rem;
+    /* ALTERADO: Adicionado mais padding na parte de baixo para a onda */
+    /* overflow: hidden; foi removido para garantir que a onda apareça */
+}
+
+/* NOVA REGRA: Cria a onda na parte de baixo da seção */
+.video-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6.25rem;
+    /* 100px */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    /* Este é o SVG da onda, com a cor da seção de baixo (#f5f3ed) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.35,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23F5F3ED'%3E%3C/path%3E%3C/svg%3E");
+    transform: scaleY(-1);
+    /* Inverte a onda para a posição correta */
+}
+
+.video-container {
+    max-width: 68.75rem;
+    /* 1100px */
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    /* Garante que o vídeo fique acima da onda */
+}
+
+.video-container h2 {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+}
+
+.video-container p {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    opacity: 0.8;
+    margin-bottom: 3rem;
+}
+
+.video-wrapper {
+    border-radius: 0.75rem;
+    /* 12px */
+    overflow: hidden;
+    box-shadow: 0 1.25rem 3.125rem rgba(0, 0, 0, 0.3);
+    /* 20px 50px */
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    background-color: #000;
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .video-section {
+        padding: 8rem 1rem 8rem;
+    }
+}
