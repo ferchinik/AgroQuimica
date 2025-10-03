@@ -49,11 +49,11 @@
 }
 
 .ticker-logo img {
-    height: 2.25rem;
+    height: 2.15rem;
     /* Ajustado para um tamanho bom, ajuste se necessário */
     width: auto;
     /* Mantém a proporção original da imagem */
-    filter: drop-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.6));
     /* ADICIONADO: Sombra sutil no logo */
 }
 

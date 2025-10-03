@@ -256,8 +256,75 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (calculateValueBtn) calculateValueBtn.addEventListener('click', calculateSoyValue);
 
-    // Carrega o valor do ticker
     if (tickerPriceEl) {
         refreshTicker();
     }
+
+    const productData = {
+        protekbio: {
+            title: "Protek Bio",
+            image: "img/protekbio.png",
+            description: "Protekbio-AQ se trata de un protector biológico que ofrece una mayor capacidad de estabilización, así como protección contra la radiación, variaciones de temperatura, deshidratación e incompatibilidades, todo con el objetivo de resguardar la sanidad de los cultivos y potenciar su desarrollo. Este producto estimula los mecanismos naturales de defensa de las plantas, incrementa la tolerancia ante factores de estrés y contribuye a la obtención de cultivos más sanos, vigorosos y productivos, promoviendo así una agricultura sostenible."
+        },
+        sikariplus: {
+            title: "Sikari Plus",
+            image: "img/sikariplus.png",
+            description: "Sikari Plus es un insecticida de formulación equilibrada que proporciona un control eficaz y confiable sobre las principales plagas agrícolas, en particular los chinches. Su acción rápida y persistente protege los cultivos en etapas críticas, minimizando las pérdidas causadas por daños de insectos y asegurando un desarrollo saludable y productivo de las plantas."
+        },
+        tempus: {
+            title: "Tempus",
+            image: "img/tempus.png",
+            description: "Tempus es un fungicida que actúa de manera segura y efectiva en el control de enfermedades fúngicas. Su formulación equilibrada refuerza la salud del cultivo, reduce el impacto ambiental y promueve prácticas agrícolas responsables. Esto garantiza una producción más estable, segura y sostenible."
+        },
+        protekbio2: {
+            title: "Protek Bio 2",
+            image: "img/protekbio2.png",
+            description: "Protekbio-AQ se trata de un protector biológico que ofrece una mayor capacidad de estabilización, así como protección contra la radiación, variaciones de temperatura, deshidratación e incompatibilidades, todo con el objetivo de resguardar la sanidad de los cultivos y potenciar su desarrollo. Este producto estimula los mecanismos naturales de defensa de las plantas, incrementa la tolerancia ante factores de estrés y contribuye a la obtención de cultivos más sanos, vigorosos y productivos, promoviendo así una agricultura sostenible."
+        },
+        vitality: {
+            title: "Vitality",
+            image: "img/vitality.png",
+            description: "Vitaly es un fungicida y bactericida microbiológico que actúa en la parte aérea de la planta, protegiendo por completo, estimulando su crecimiento y mejorando la sanidad y calidad de las plantas."
+        }
+    };
+
+    // 2. Selecionar os elementos do DOM
+    const productModal = document.getElementById('product-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const detailButtons = document.querySelectorAll('.btn-details');
+
+    const modalImage = document.getElementById('modal-product-image');
+    const modalTitle = document.getElementById('modal-product-title');
+    const modalDescription = document.getElementById('modal-product-description');
+
+    // 3. Função para abrir o modal
+    function openModal(productKey) {
+        const product = productData[productKey];
+        if (product) {
+            modalImage.src = product.image;
+            modalTitle.textContent = product.title;
+            modalDescription.textContent = product.description;
+            productModal.classList.add('visible');
+        }
+    }
+
+    // 4. Função para fechar o modal
+    function closeModal() {
+        productModal.classList.remove('visible');
+    }
+
+    // 5. Adicionar os event listeners
+    detailButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const productKey = button.dataset.product;
+            openModal(productKey);
+        });
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+    productModal.addEventListener('click', (event) => {
+        if (event.target === productModal) {
+            closeModal();
+        }
+    });
 });
