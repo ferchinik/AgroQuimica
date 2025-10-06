@@ -327,4 +327,28 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    const policyCards = document.querySelectorAll('.policy-card');
+
+    policyCards.forEach(card => {
+        const button = card.querySelector('.btn-toggle-policy');
+        // Agora procura pelo novo container genérico
+        const content = card.querySelector('.collapsible-content');
+
+        // Se o botão e o conteúdo a ser expandido existem, adiciona a funcionalidade
+        if (button && content) {
+            button.addEventListener('click', () => {
+                card.classList.toggle('expanded');
+                if (card.classList.contains('expanded')) {
+                    button.textContent = 'Mostrar Menos';
+                } else {
+                    button.textContent = 'Mostrar Más';
+                }
+            });
+        }
+        // Se o botão existe mas não há conteúdo para expandir, esconde o botão
+        else if (button && !content) {
+            button.style.display = 'none';
+        }
+    });
 });

@@ -1,4 +1,4 @@
-/* css/experience.css (Otimizado com REM e controle de SVGs) */
+/* css/experience.css (Com texto mais amplo) */
 
 .experience {
     background-color: var(--color-background-section);
@@ -9,7 +9,7 @@
 
 .experience-container {
     max-width: 75rem;
-    /* ALTERADO: 1200px -> 75rem */
+    /* 1200px */
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
@@ -43,13 +43,13 @@
     font-size: 1.1rem;
     line-height: 1.7;
     max-width: 31.25rem;
-    /* ALTERADO: 500px -> 31.25rem */
+    /* 500px - Este limite é bom para mobile */
     margin: 0 auto;
 }
 
 .experience-diagram-col img {
     height: auto;
-    animation: fadeInScale 1.2s ease-out forwards, floatDiagram 3s ease-in-out infinite;
+    animation: fadeInScale 1.2s ease-out forwards, floatDiagram 4s ease-in-out infinite;
     opacity: 0;
 }
 
@@ -71,10 +71,9 @@
     }
 
     50% {
-        transform: translateY(-1.125rem) scale(1.03);
+        transform: translateY(-0.625rem) scale(1.015);
     }
 
-    /* ALTERADO: -18px -> -1.125rem */
     100% {
         transform: translateY(0) scale(1);
     }
@@ -88,7 +87,6 @@
     display: none;
 }
 
-/* ADICIONADO: Controle de tamanho dos SVGs */
 .icon-molecule svg {
     width: 6.25rem;
     /* 100px */
@@ -113,15 +111,49 @@
     right: 5%;
 }
 
+.experience-list {
+    list-style: none;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.experience-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.experience-list .checkmark {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-secondary);
+    flex-shrink: 0;
+}
+
+@media (max-width: 1049px) {
+    .experience-list {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 25rem;
+    }
+}
+
 @media (min-width: 1050px) {
     .experience-container {
-        grid-template-columns: 0.8fr 1.2fr;
+        grid-template-columns: 1fr 1fr;
         gap: 5rem;
+        align-items: center;
     }
 
     .experience-diagram-col img {
-        max-width: 40.625rem;
-        /* ALTERADO: 650px -> 40.625rem */
+        min-width: 52rem;
         width: 100%;
         height: auto;
     }
@@ -132,6 +164,8 @@
 
     .experience-text-col p {
         margin: 0;
+        max-width: none;
+        /* ALTERADO: Remove o limite de largura do parágrafo */
     }
 
     .decorative-icon {

@@ -1,4 +1,4 @@
-/* css/footer.css (Otimizado com REM) */
+/* css/footer.css (Com cores personalizadas para redes sociais) */
 
 .footer {
     background-color: var(--color-primary);
@@ -8,7 +8,7 @@
 
 .footer-container {
     max-width: 75rem;
-    /* ALTERADO: 1200px -> 75rem */
+    /* 1200px */
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
@@ -33,9 +33,9 @@
     bottom: 0;
     left: 0;
     width: 2.5rem;
-    /* ALTERADO: 40px -> 2.5rem */
+    /* 40px */
     height: 0.1875rem;
-    /* ALTERADO: 3px -> 0.1875rem */
+    /* 3px */
     background-color: var(--color-secondary);
 }
 
@@ -57,9 +57,9 @@
     align-items: center;
     justify-content: center;
     width: 2.5rem;
-    /* ALTERADO: 40px -> 2.5rem */
+    /* 40px */
     height: 2.5rem;
-    /* ALTERADO: 40px -> 2.5rem */
+    /* 40px */
     color: #fff;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
@@ -67,17 +67,19 @@
 }
 
 .social-icons a:hover {
-    background-color: var(--color-secondary);
+    /* A cor de fundo genérica foi removida daqui */
     transform: translateY(-0.25rem);
-    /* ALTERADO: -4px -> -0.25rem */
+    /* -4px */
 }
 
 .social-icons svg {
     width: 1.375rem;
-    /* ALTERADO: 22px -> 1.375rem */
+    /* 22px */
     height: 1.375rem;
-    /* ALTERADO: 22px -> 1.375rem */
+    /* 22px */
 }
+
+/* ... (o restante das regras até o final do arquivo continua igual) ... */
 
 .footer-links-list {
     list-style: none;
@@ -114,7 +116,7 @@
 .footer-links-list svg {
     flex-shrink: 0;
     margin-top: 0.1875rem;
-    /* ALTERADO: 3px -> 0.1875rem */
+    /* 3px */
     color: var(--color-secondary);
 }
 
@@ -124,9 +126,9 @@
 
 .footer-map iframe {
     border-radius: 0.5rem;
-    /* ALTERADO: 8px -> 0.5rem */
+    /* 8px */
     height: 13.75rem;
-    /* ALTERADO: 220px -> 13.75rem */
+    /* 220px */
     width: 100%;
 }
 
@@ -140,20 +142,20 @@
 .whatsapp-float {
     position: fixed;
     width: 3.75rem;
-    /* ALTERADO: 60px -> 3.75rem */
+    /* 60px */
     height: 3.75rem;
-    /* ALTERADO: 60px -> 3.75rem */
+    /* 60px */
     bottom: 1.5625rem;
-    /* ALTERADO: 25px -> 1.5625rem */
+    /* 25px */
     right: 1.5625rem;
-    /* ALTERADO: 25px -> 1.5625rem */
+    /* 25px */
     background-color: #25D366;
     color: #FFF;
     border-radius: 3.125rem;
-    /* ALTERADO: 50px -> 3.125rem */
+    /* 50px */
     text-align: center;
     box-shadow: 0.125rem 0.125rem 0.375rem rgba(0, 0, 0, 0.4);
-    /* ALTERADO: 2px 2px 6px */
+    /* 2px 2px 6px */
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -167,9 +169,9 @@
 
 .whatsapp-float svg {
     width: 2rem;
-    /* ALTERADO: 32px -> 2rem */
+    /* 32px */
     height: 2rem;
-    /* ALTERADO: 32px -> 2rem */
+    /* 32px */
     fill: white;
 }
 
@@ -185,4 +187,24 @@
         grid-template-columns: 1.5fr 2fr;
         gap: 3rem;
     }
+}
+
+.social-icons a[aria-label="Facebook"] {
+    background-color: #1877F2;
+    /* Azul Facebook */
+}
+
+.social-icons a[aria-label="Instagram"] {
+    background-color: #E4405F;
+    /* Rosa Instagram */
+}
+
+.social-icons a[aria-label="YouTube"] {
+    background-color: #FF0000;
+    /* Vermelho YouTube */
+}
+
+.social-icons a[aria-label="LinkedIn"] {
+    background-color: #0077B5;
+    /* Azul LinkedIn */
 }

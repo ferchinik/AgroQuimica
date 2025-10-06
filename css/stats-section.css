@@ -55,6 +55,22 @@
     line-height: 1.5;
 }
 
+.stat-icon svg {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+/* --- Filtro para Recolorir a Imagem PNG --- */
+.stat-icon-png {
+    width: 3.5rem; /* Define o mesmo tamanho dos outros ícones */
+    height: 3.5rem;
+    
+    /* Esta combinação de filtros converte uma imagem preta/escura
+    para a cor azul exata do seu site (#0A2D4A).
+    */
+    filter: brightness(0) saturate(100%) invert(13%) sepia(59%) saturate(3553%) hue-rotate(189deg) brightness(95%) contrast(94%);
+}
+
 /* Deixa responsivo para telas maiores */
 @media (min-width: 768px) {
     .stats-grid {
