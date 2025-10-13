@@ -73,8 +73,16 @@
 }
 
 .policy-icon {
-    color: var(--color-secondary);
+    color: var(--color-primary); /* ALTERADO: de 'secondary' para 'primary' (azul escuro) */
     margin-bottom: 1.5rem;
+    /* Alinha o ícone no centro do card */
+    display: flex;
+    justify-content: center;
+}
+
+.policy-icon svg {
+    width: 3rem;  /* 48px */
+    height: 3rem; /* 48px */
 }
 
 .policy-card h3 {
@@ -146,6 +154,7 @@
 .btn-toggle-policy:hover {
     background-color: #061d2b;
 }
+
 /* --- Estilos para o Certificado --- */
 .certificate-container {
     margin-top: 4rem;
@@ -181,7 +190,8 @@
 
 /* Classe que será adicionada via JS para expandir */
 .policy-card.expanded .collapsible-content {
-    max-height: 30rem; /* Um valor alto para caber o conteúdo */
+    max-height: 30rem;
+    /* Um valor alto para caber o conteúdo */
     margin-top: 1.5rem;
 }
 

@@ -62,8 +62,10 @@
 .carousel-track {
     display: flex;
     gap: 2rem;
-    width: calc((15rem + 2rem) * 10);
-    animation: scroll 40s linear infinite;
+    /* Alterado de 10 para 24 (12 itens * 2) */
+    width: calc((15rem + 2rem) * 24);
+    /* Duração aumentada para manter uma velocidade agradável (ajuste se necessário) */
+    animation: scroll 90s linear infinite;
 }
 
 @keyframes scroll {
@@ -72,7 +74,8 @@
     }
 
     to {
-        transform: translateX(calc(-1 * (15rem + 2rem) * 5));
+        /* Alterado de 5 para 12 (número de itens originais) */
+        transform: translateX(calc(-1 * (15rem + 2rem) * 12));
     }
 }
 
