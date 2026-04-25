@@ -1,5 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- DATAS AUTOMÁTICAS ---
+    const currentYear = new Date().getFullYear();
+
+    const currentYearEl = document.getElementById('current-year');
+    if (currentYearEl) currentYearEl.textContent = currentYear;
+
+    const yearsSinceFoundingEl = document.getElementById('years-since-founding');
+    if (yearsSinceFoundingEl) {
+        const foundingYear = parseInt(yearsSinceFoundingEl.dataset.foundingYear, 10);
+        if (!isNaN(foundingYear)) {
+            yearsSinceFoundingEl.textContent = currentYear - foundingYear;
+        }
+    }
+
     // --- FUNCIONALIDADE DO CABEÇALHO ---
     const header = document.querySelector('.header');
     const hamburger = document.querySelector('.hamburger');
