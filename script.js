@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultValueEl = document.getElementById('result-value');
 
     async function fetchSoybeanData() {
-        const apiKey = "KUOcZleI4QcBT5mSxIPNBkanTEWka116";
+        const apiKey = "pujzdnNxZypG3dHjFsKz9UnqoHtcsQw8";
         const apiUrl = `https://financialmodelingprep.com/api/v3/quote/ZS=F?apikey=${apiKey}`;
 
         try {
