@@ -88,30 +88,27 @@
                     <img src="img/cmegroup.png" alt="CME Group">
                 </div>
                 <div class="ticker-item">
-                    <span class="ticker-label">Último Bushel</span>
-                    <span class="ticker-value" id="ticker-price">991.00</span>
+                    <span class="ticker-label">Cotización SOYB (USD)</span>
+                    <span class="ticker-value" id="ticker-price">--</span>
                 </div>
                 <div class="ticker-item">
                     <span class="ticker-label">Variación</span>
-                    <span class="ticker-value" id="ticker-change">-7.50</span>
+                    <span class="ticker-value" id="ticker-change">--</span>
                 </div>
                 <div class="ticker-item">
                     <span class="ticker-label">Variación %</span>
-                    <span class="ticker-value" id="ticker-percent">-0.75%</span>
-                </div>
-                <div class="ticker-action">
-                    <button id="open-calculator-btn" class="btn-calculate">Calcule el Valor de su Soja</button>
+                    <span class="ticker-value" id="ticker-percent">--</span>
                 </div>
             </div>
             <div class="ticker-link-wrapper">
-                <a href="https://www.cmegroup.com/markets/agriculture/oilseeds/soybean.html" target="_blank"
+                <a href="https://www.teucrium.com/soyb" target="_blank"
                     rel="noopener noreferrer" class="ticker-source-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"></path>
                         <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"></path>
                     </svg>
-                    <span>Fuente: CME Group</span>
+                    <span>Fuente: Teucrium Soybean Fund (NYSE: SOYB)</span>
                 </a>
             </div>
         </div>
@@ -1041,30 +1038,6 @@
             <p> 2025 Agro Química Biochemical. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <div id="calculator-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button id="close-calculator-btn" class="modal-close-btn">×</button>
-            <h2>Calculadora de Valor de Soja</h2>
-            <div class="calculator-form">
-                <div class="form-group">
-                    <label for="quantity">Cantidad:</label>
-                    <input type="number" id="quantity" placeholder="Ej: 1000">
-                </div>
-                <div class="form-group">
-                    <label for="unit">Unidad:</label>
-                    <select id="unit">
-                        <option value="bags">Sacos (60kg)</option>
-                        <option value="tonnes">Toneladas</option>
-                    </select>
-                </div>
-                <button id="calculate-value-btn" class="btn-calculate">Calcular</button>
-            </div>
-            <div id="calculator-result" class="calculator-result">
-                <p>El valor aproximado de su producción es:</p>
-                <span id="result-value">--</span>
-            </div>
-        </div>
-    </div>
 
     <div id="product-modal" class="product-modal-overlay">
         <div class="product-modal-content">

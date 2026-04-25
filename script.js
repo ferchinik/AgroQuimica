@@ -141,35 +141,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- CÓDIGO DO TICKER E CALCULADORA ---
+    // --- CÓDIGO DO TICKER ---
     const tickerPriceEl = document.getElementById('ticker-price');
     const tickerChangeEl = document.getElementById('ticker-change');
     const tickerPercentEl = document.getElementById('ticker-percent');
-    const openCalculatorBtn = document.getElementById('open-calculator-btn');
-    const closeCalculatorBtn = document.getElementById('close-calculator-btn');
-    const calculatorModal = document.getElementById('calculator-modal');
-    const calculateValueBtn = document.getElementById('calculate-value-btn');
-    const quantityInput = document.getElementById('quantity');
-    const unitSelect = document.getElementById('unit');
-    const resultDiv = document.getElementById('calculator-result');
-    const resultValueEl = document.getElementById('result-value');
 
     async function fetchSoybeanData() {
-        const apiKey = "pujzdnNxZypG3dHjFsKz9UnqoHtcsQw8";
-        const apiUrl = `https://financialmodelingprep.com/api/v3/quote/ZS=F?apikey=${apiKey}`;
+        const apiKey = "5345517fd575492f9786228d10b3379e";
+        const apiUrl = `https://api.twelvedata.com/quote?symbol=SOYB&apikey=${apiKey}`;
 
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
 
             const data = await response.json();
-            const soyData = data[0];
-            if (!soyData) throw new Error("Dados da soja não encontrados na resposta da API.");
+            if (!data || data.status === "error" || !data.close) {
+                throw new Error(data.message || "Dados da soja não encontrados na resposta da API.");
+            }
 
             return {
-                price: soyData.price,
-                change: soyData.change,
-                percentChange: soyData.changesPercentage
+                price: parseFloat(data.close),
+                change: parseFloat(data.change),
+                percentChange: parseFloat(data.percent_change)
             };
         } catch (error) {
             console.error("Erro ao buscar dados de cotação:", error);
@@ -209,47 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
             updateTickerUI(data);
         }
     }
-
-    function calculateSoyValue() {
-        if (!quantityInput || !unitSelect || !tickerPriceEl || !resultValueEl || !resultDiv) return;
-
-        const quantity = parseFloat(quantityInput.value);
-        if (isNaN(quantity) || quantity <= 0) {
-            alert("Por favor, insira uma quantidade válida.");
-            return;
-        }
-
-        const currentBushelPriceString = tickerPriceEl.textContent.replace(/,/g, '');
-        const currentBushelPriceInDollars = parseFloat(currentBushelPriceString);
-
-        if (isNaN(currentBushelPriceInDollars)) {
-            alert("Não foi possível obter a cotação atual. Tente novamente mais tarde.");
-            return;
-        }
-
-        const unit = unitSelect.value;
-        const BUSHEL_IN_KG = 27.2155;
-        const pricePerKg = currentBushelPriceInDollars / BUSHEL_IN_KG;
-        let totalValue = 0;
-
-        if (unit === 'bags') {
-            totalValue = quantity * (pricePerKg * 60);
-        } else if (unit === 'tonnes') {
-            totalValue = quantity * (pricePerKg * 1000);
-        }
-
-        resultValueEl.textContent = `US$ ${totalValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        resultDiv.style.display = 'block';
-    }
-
-    if (openCalculatorBtn) openCalculatorBtn.addEventListener('click', () => calculatorModal.classList.add('visible'));
-    if (closeCalculatorBtn) closeCalculatorBtn.addEventListener('click', () => calculatorModal.classList.remove('visible'));
-    if (calculatorModal) {
-        calculatorModal.addEventListener('click', (event) => {
-            if (event.target === calculatorModal) calculatorModal.classList.remove('visible');
-        });
-    }
-    if (calculateValueBtn) calculateValueBtn.addEventListener('click', calculateSoyValue);
 
     if (tickerPriceEl) {
         refreshTicker();
