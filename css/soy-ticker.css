@@ -49,12 +49,13 @@
 }
 
 .ticker-logo img {
-    height: 2.15rem;
-    /* Ajustado para um tamanho bom, ajuste se necessário */
+    height: 2.5rem;
     width: auto;
-    /* Mantém a proporção original da imagem */
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
     filter: drop-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.6));
-    /* ADICIONADO: Sombra sutil no logo */
 }
 
 .ticker-item {
@@ -247,7 +248,8 @@
     .ticker-bar {
         display: grid;
         align-items: center;
-        grid-template-columns: 1.5fr repeat(3, 1fr) 2fr;
+        justify-items: center;
+        grid-template-columns: 1.5fr repeat(3, 1fr);
         gap: 2rem;
         padding: 1.5rem 2.5rem;
     }
@@ -255,15 +257,12 @@
     .ticker-logo {
         padding: 0;
         border: none;
-        text-align: left;
+        text-align: center;
+        width: auto;
     }
 
     .ticker-item {
-        align-items: flex-start;
-        text-align: left;
-    }
-
-    .ticker-action {
-        width: auto;
+        align-items: center;
+        text-align: center;
     }
 }
